@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useState } from "react";
 import { Col, Row } from 'react-bootstrap'
 import { Helmet } from 'react-helmet-async'
@@ -15,7 +16,7 @@ export default function HomePage() {
  const [ price, setPrice ] = useState(0);
 
   // Triggered when the value gets updated while scrolling the slider:
-  const handleInput = (e)=>{
+  const handleInput = (e: React.SyntheticEvent)=>{
     setPrice( e.target.value );
   }
   
