@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react'
-import {sampleProducts} from "./data"
 import {
   Badge,
   Button,
