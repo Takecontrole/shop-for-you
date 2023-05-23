@@ -1,9 +1,8 @@
 // @ts-nocheck
 import { useEffect, useState } from "react";
-import axios from "../axios";
-import ProductItem from "./ProductItem"
+import FavoriteCard from "./FavoriteItem"
 
-const ProductList = ({ itemsFilter }) => {
+const FavoriteList = ({ itemsFilter }) => {
   const [filters, setFilters] = useState({});
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [ price, setPrice ] = useState(0);
@@ -94,14 +93,14 @@ const handleFilters = (e: React.SyntheticEvent) => {
      
       { filteredProducts.filter( product => { return product.price > parseInt(price, 10) }).map( product => {
         return <div style={{width:"50%"}} key={product.title}> <div key={product.id} >
-          <ProductItem product={product} />
+          <FavoriteCard product={product} />
         </div> </div>
       })}        
     </div>
   );
 };
 
-export default ProductList;
+export default FavoriteList;
 /* : products
             .slice(0, 8)
             .map((item) => <Product item={item} key={item.id} /> */

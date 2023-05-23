@@ -2,10 +2,10 @@ import { useQuery } from '@tanstack/react-query'
 import apiClient from '../apiClient'
 import { Product } from '../types/Product'
 
-export const useGetProductsQuery = (abc: string) =>
+export const useGetProductsQuery = (category: string) =>
   useQuery({
-    queryKey: ['products', abc],
-    queryFn: async () => (await apiClient.get<Product[]>(`products?sort=${abc}`)).data,
+    queryKey: ['products', category],
+    queryFn: async () => (await apiClient.get<Product[]>(`products/${category}`)).data,
   })
 
 export const useGetProductDetailsBySlugQuery = (id: string) =>

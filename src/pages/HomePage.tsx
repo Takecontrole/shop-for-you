@@ -1,18 +1,16 @@
 // @ts-nocheck
 import React, { useEffect, useState } from "react";
-import { Col, Row } from 'react-bootstrap'
 import { Helmet } from 'react-helmet-async'
 import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
 import ProductList from '../components/ProductList'
-//import ProductItem from '../components/ProductItem'
 import { useGetProductsQuery } from '../hooks/productHooks'
 import { ApiError } from '../types/ApiError'
 import { getError } from '../utils'
 
 export default function HomePage() { 
-  const [abc, setAbc] = useState(""); 
-  const { data: products, isLoading, error } = useGetProductsQuery(abc!)
+  const [category, setCategory] = useState(""); 
+  const { data: products, isLoading, error } = useGetProductsQuery(category!)
  const [searchValue, setSearchValue] = useState(""); 
  
   
@@ -29,24 +27,35 @@ export default function HomePage() {
   ) : error ? (
     <MessageBox variant="danger">{getError(error as ApiError)}</MessageBox>
   ) : (
-    <Row>
+    <div>
       <Helmet>
         <title>TS Amazona</title>
-      </Helmet>
+      </Helmet> 
+
+        
+    <div className="d-flex flex-column">
       <input
         className="search__input"
         type="text"
-        placeholder="Enter product name"
+        placeholder="Поиск..."
+        style={{maxWidth:"400px"}}
         value={searchValue}
         onChange={submitHandler}
       /> 
-         <select onChange={(e) => setAbc(e.target.value)}>
-            <option value="asc">по возрастанию</option>
-            <option value="desc">по убыванию</option>
+         <select  onChange={(e) => setCategory(e.target.value)}>
+            <option disabled selected>
+              категории
+           </option>
+            <option value="">Все</option>
+            <option value="/category/women's clothing">Женская одежда</option>
+            <option value="category/men's clothing">Мужская одежда</option>
+            <option value="category/jewelery">jewelery</option>
+            <option value="category/electronics">Электроника</option>
              </select> 
+     </div>        
                <ProductList itemsFilter={itemsFilter}/>
      
 
-    </Row>
+    </div>
   )
 }

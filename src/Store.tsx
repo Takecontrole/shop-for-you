@@ -1,10 +1,12 @@
 import React from 'react'
 import { Cart, CartItem, ShippingAddress } from './types/Cart'
+import { Favorite, FavoriteItem, fShippingAddress } from './types/Cart'
 import { UserInfo } from './types/UserInfo'
 
 type AppState = {
   mode: string
   cart: Cart
+  favorite: Favorite
   userInfo?: UserInfo
 }
 
@@ -34,6 +36,21 @@ const initialState: AppState = {
     taxPrice: 0,
     totalPrice: 0,
   },
+  favorite: {
+    favoriteItems: localStorage.getItem('favoriteItems')
+      ? JSON.parse(localStorage.getItem('favoriteItems')!)
+      : [],
+    shippingAddress: localStorage.getItem('shippingAddress')
+      ? JSON.parse(localStorage.getItem('shippingAddress')!)
+      : {},
+    paymentMethod: localStorage.getItem('paymentMethod')
+      ? localStorage.getItem('paymentMethod')!
+      : 'PayPal',
+    itemsPrice: 0,
+    shippingPrice: 0,
+    taxPrice: 0,
+    totalPrice: 0,
+  },
 }
 
 type Action =
@@ -41,6 +58,9 @@ type Action =
   | { type: 'CART_ADD_ITEM'; payload: CartItem }
   | { type: 'CART_REMOVE_ITEM'; payload: CartItem }
   | { type: 'CART_CLEAR' }
+  | { type: 'FAVORITE_ADD_ITEM'; payload: CartItem }
+  | { type: 'FAVORITE_REMOVE_ITEM'; payload: CartItem }
+  | { type: 'FAVORITE_CLEAR' }
   | { type: 'USER_SIGNIN'; payload: UserInfo }
   | { type: 'USER_SIGNOUT' }
   | { type: 'SAVE_SHIPPING_ADDRESS'; payload: ShippingAddress }
@@ -75,6 +95,31 @@ function reducer(state: AppState, action: Action): AppState {
     }
     case 'CART_CLEAR':
       return { ...state, cart: { ...state.cart, cartItems: [] } }
+
+case 'FAVORITE_ADD_ITEM':
+      const newFavoriteItem = action.payload
+      const existFavoriteItem = state.favorite.favoriteItems.find(
+        (item: FavoriteItem) => item.id === newFavoriteItem.id
+      )
+      const favoriteItems = existFavoriteItem
+        ? state.favorite.favoriteItems.map((item: FavoriteItem) =>
+            item.id === existFavoriteItem.id ? newFavoriteItem : item
+          )
+        : [...state.favorite.favoriteItems, newFavoriteItem]
+
+      localStorage.setItem('favoriteItems', JSON.stringify(favoriteItems))
+
+      return { ...state, favorite: { ...state.favorite, favoriteItems } }
+
+    case 'FAVORITE_REMOVE_ITEM': {
+      const favoriteItems = state.favorite.favoriteItems.filter(
+        (item: FavoriteItem) => item.id !== action.payload.id
+      )
+      localStorage.setItem('favoriteItems', JSON.stringify(favoriteItems))
+      return { ...state, favorite: { ...state.favorite, favoriteItems } }
+    }
+    case 'FAVORITE_CLEAR':
+      return { ...state, favorite: { ...state.favorite, favoriteItems: [] } }
 
     case 'USER_SIGNIN':
       return { ...state, userInfo: action.payload }

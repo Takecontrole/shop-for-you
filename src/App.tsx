@@ -79,7 +79,7 @@ function App() {
                   </svg>
                   <span>Cart</span>
                 </Link>
-            <SearchBox />
+           
 
 
           </div>
@@ -110,26 +110,10 @@ function App() {
       <main>
         <Container className="mt-3">
           <Outlet />
-                  <ul>
-        {/* 
-        sampleProducts.map((product) => (
-        <li key={product.id}>
-        <h2>{product.id}</h2>
-        <h2>{product.image}</h2>
-        <h2>{product.title}</h2>
-        <h2>{product.price}</h2>
-        <h2>{product.category}</h2>
-        <h2>{product.description}</h2>
-        
-        </li>
-        ))
-        */}
-        </ul>
         </Container>
-
       </main>
       <footer>
-        <div className="text-center">All rights reserved</div>
+      
       </footer>
     </div>
   )

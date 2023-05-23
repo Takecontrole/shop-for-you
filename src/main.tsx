@@ -16,6 +16,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { StoreProvider } from './Store'
 import CartPage from './pages/CartPage'
+import Favorite from './pages/Favorite'
 
 
 const router = createBrowserRouter(
@@ -24,7 +25,9 @@ const router = createBrowserRouter(
       <Route index={true} element={<HomePage />} />
       <Route path="product/:id" element={<ProductPage />} />
       <Route path="cart" element={<CartPage />} />
+      <Route path="favorite" element={<Favorite />} />
     </Route>
+    
   )
 )
 

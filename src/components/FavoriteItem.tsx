@@ -10,7 +10,7 @@ import { convertProductToCartItem } from '../utils'
 import { convertProductToFavoriteItem } from '../utils'
 //import Rating from './Rating'
 
-function ProductItem({ product }: { product: Product }) {
+function FavoriteCard({ product }: { product: Product }) {
   const { state, dispatch } = useContext(Store)
   const {
     cart: { cartItems },
@@ -83,4 +83,4 @@ function ProductItem({ product }: { product: Product }) {
   )
 }
 
-export default ProductItem
+export default FavoriteCard
