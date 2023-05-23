@@ -48,36 +48,7 @@ const handleFilters = (e: React.SyntheticEvent) => {
       
     }
   }, [sort]);
-/*
- const [products, setProducts] = useState([]);
-  useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const res = await axios.get(
-          category
-            ? `/products/category/${category}`
-            : "/products"
-        );
-        setProducts(res.data);
-      } catch (err) {}
-    };
-    getProducts();
-  }, [category]);
-  
-  useEffect(() => {
-    if (sort === "asc") {
-      setFilteredProducts((prev) =>
-        [...prev].sort((a, b) => a.price - b.price)
-      );
-    } else if (sort === "desc") {
-      setFilteredProducts((prev) =>
-        [...prev].sort((a, b) => b.price - a.price)
-      );
-    } else {
-      
-    }
-  }, [sort]);
-*/
+
   return (
     <div>
     <div className="d-flex flex-column flex-md-row justify-content-center mt-5">

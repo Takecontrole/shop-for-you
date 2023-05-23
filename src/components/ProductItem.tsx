@@ -21,11 +21,6 @@ function ProductItem({ product }: { product: Product }) {
   const addToCartHandler = (item: CartItem) => {
     const existItem = cartItems.find((x) => x.id === product.id)
     const quantity = existItem ? existItem.quantity + 1 : 1
-    {/*if (product.countInStock < quantity) {
-      //alert('Sorry. Product is out of stock')
-      return
-    }
-    */}
     dispatch({
       type: 'CART_ADD_ITEM',
       payload: { ...item, quantity },

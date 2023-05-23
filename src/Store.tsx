@@ -53,8 +53,8 @@ type Action =
   | { type: 'CART_ADD_ITEM'; payload: CartItem }
   | { type: 'CART_REMOVE_ITEM'; payload: CartItem }
   | { type: 'CART_CLEAR' }
-  | { type: 'FAVORITE_ADD_ITEM'; payload: CartItem }
-  | { type: 'FAVORITE_REMOVE_ITEM'; payload: CartItem }
+  | { type: 'FAVORITE_ADD_ITEM'; payload: FavoriteItem }
+  | { type: 'FAVORITE_REMOVE_ITEM'; payload: FavoriteItem }
   | { type: 'FAVORITE_CLEAR' }
   | { type: 'USER_SIGNIN'; payload: UserInfo }
   | { type: 'USER_SIGNOUT' }

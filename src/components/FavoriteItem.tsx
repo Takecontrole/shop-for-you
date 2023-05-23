@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { useContext } from 'react'
-import { Button, Card } from 'react-bootstrap'
+import { Button, Card, Col, ListGroup, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { Store } from '../Store'
@@ -14,18 +14,14 @@ import { convertProductToFavoriteItem } from '../utils'
 function FavoriteCard({ product }: { product: Product }) {
   const { state, dispatch } = useContext(Store)
   const {
+    mode,
     cart: { cartItems },
     favorite: { favoriteItems },
   } = state
 
-  const addToCartHandler = (item: CartItem) => {
+   const addToCartHandler = (item: CartItem) => {
     const existItem = cartItems.find((x) => x.id === product.id)
     const quantity = existItem ? existItem.quantity + 1 : 1
-    {/*if (product.countInStock < quantity) {
-      //alert('Sorry. Product is out of stock')
-      return
-    }
-    */}
     dispatch({
       type: 'CART_ADD_ITEM',
       payload: { ...item, quantity },
@@ -33,55 +29,46 @@ function FavoriteCard({ product }: { product: Product }) {
     toast.success('Товар добавлен в корзину')
   }
   
-  const addToFavoriteHandler = (item: FavoriteItem) => {
-    const existFavoriteItem = favoriteItems.find((x) => x.id === product.id)
-    const quantity = existFavoriteItem ? existFavoriteItem.quantity + 1 : 1
-    {/*if (product.countInStock < quantity) {
-      //alert('Sorry. Product is out of stock')
-      return
-    }
-    */}
-    dispatch({
-      type: 'FAVORITE_ADD_ITEM',
-      payload: { ...item, quantity },
-    })
-    toast.success('Товар добавлен в избранное')
+  const removeItemHandler = (product: FavoriteItem) => {
+    dispatch({ type: 'FAVORITE_REMOVE_ITEM', payload: product })
   }
+  
 
   return (
-    <Card>
-      <Link to={`/product/${product.id}`}>
+       
+
+                
+                     <div className="d-flex flex-column justify-content-center text-center  " >
+                      <Link to={`/product/${product.id}`}>
         <img src={product.image} className="card-img-top" alt={product.title} />
-      </Link>
-      <Card.Body>
-        <Link to={`/product/${product.id}`}>
+                            </Link>
+                     
+        <Link style={{textDecoration:"none", color:"black"}}  to={`/product/${product.id}`}>
           <Card.Title>{product.title}</Card.Title>
         </Link>
-        {/*
-        <Rating rating={product.rating} numReviews={product.numReviews} />
-     */}
-        <Card.Text>${product.price}</Card.Text>
-        {/*
-        {product.countInStock === 0 ? (
-          <Button variant="light" disabled>
-            Out of stock
-          </Button>
-        ) : (
-        )} 
-        */}
-          <Button
+          <Card.Text>${product.price}</Card.Text> 
+ <div className="d-flex justify-content-between"> 
+           <Button variant="dark"
             onClick={() => addToCartHandler(convertProductToCartItem(product))}
           >
             Добавить в корзину
           </Button>
-          <Button
-            onClick={() => addToFavoriteHandler(convertProductToFavoriteItem(product))}
-          >
-            Добавить в избранное 
-          </Button>
-      </Card.Body>
-    </Card>
+
+                    
+                      <Button
+                        onClick={() => removeItemHandler(product)}
+                        variant={mode}
+                      >
+                        <i className="fas fa-trash"></i>
+                      </Button>
+                   </div>
+                  </div>
+               
+              
+           
+          
   )
 }
 
 export default FavoriteCard
+

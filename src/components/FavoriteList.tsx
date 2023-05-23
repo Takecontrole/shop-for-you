@@ -47,36 +47,7 @@ const handleFilters = (e: React.SyntheticEvent) => {
       
     }
   }, [sort]);
-/*
- const [products, setProducts] = useState([]);
-  useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const res = await axios.get(
-          category
-            ? `/products/category/${category}`
-            : "/products"
-        );
-        setProducts(res.data);
-      } catch (err) {}
-    };
-    getProducts();
-  }, [category]);
-  
-  useEffect(() => {
-    if (sort === "asc") {
-      setFilteredProducts((prev) =>
-        [...prev].sort((a, b) => a.price - b.price)
-      );
-    } else if (sort === "desc") {
-      setFilteredProducts((prev) =>
-        [...prev].sort((a, b) => b.price - a.price)
-      );
-    } else {
-      
-    }
-  }, [sort]);
-*/
+
   return (
     <div>
    <div className="d-flex flex-column flex-md-row justify-content-center mt-5">
@@ -87,8 +58,6 @@ const handleFilters = (e: React.SyntheticEvent) => {
              </select> 
              </div> 
                              <div className="d-flex flex-column align-items-center m-5">
-           <input type="range" min="0" max="1000" onInput={ handleInput } />
-      <p>цены от: { price } $</p>
        </div>
                  <div className="d-flex flex-column m-5">
               <p>Сортировать по цене:</p>
@@ -98,12 +67,13 @@ const handleFilters = (e: React.SyntheticEvent) => {
                          </select>
             </div>
             </div>
-
+ <div style={{display:"flex",flexWrap: "wrap", justifyContent:"center"}}  >
       { filteredProducts.filter( product => { return product.price > parseInt(price, 10) }).map( product => {
-        return <div style={{width:"50%"}} key={product.title}> <div key={product.id} >
+        return <div style={{width:"300px", margin:"2rem"}}  key={product.title}> <div key={product.id} >
           <FavoriteCard product={product} />
         </div> </div>
       })}        
+    </div>
     </div>
   );
 };
