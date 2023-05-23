@@ -79,18 +79,26 @@ const handleFilters = (e: React.SyntheticEvent) => {
 */
   return (
     <div>
+   <div className="d-flex flex-column flex-md-row justify-content-center mt-5">
+    <div className="d-flex flex-column m-5">
    <p>Сортировать по алфавиту:</p>                    <select  onChange={(e) => setSort(e.target.value)}>
             <option value="Сверху вниз">Сверху вниз</option>
             <option value="Снизу вверх">Снизу вверх</option>
              </select> 
+             </div> 
+                             <div className="d-flex flex-column align-items-center m-5">
+           <input type="range" min="0" max="1000" onInput={ handleInput } />
+      <p>цены от: { price } $</p>
+       </div>
+                 <div className="d-flex flex-column m-5">
               <p>Сортировать по цене:</p>
          <select onChange={(e) => setSort(e.target.value)}>
             <option value="asc">(увл)</option>
             <option value="desc">(умен)</option>
                          </select>
-           <input type="range" min="0" max="1000" onInput={ handleInput } />
-      <p>цены от: { price } $</p>
-     
+            </div>
+            </div>
+
       { filteredProducts.filter( product => { return product.price > parseInt(price, 10) }).map( product => {
         return <div style={{width:"50%"}} key={product.title}> <div key={product.id} >
           <FavoriteCard product={product} />
