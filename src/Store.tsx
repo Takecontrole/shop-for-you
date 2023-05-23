@@ -1,6 +1,6 @@
 import React from 'react'
 import { Cart, CartItem, ShippingAddress } from './types/Cart'
-import { Favorite, FavoriteItem, fShippingAddress } from './types/Favorite'
+import { Favorite } from './types/Favorite'
 import { UserInfo } from './types/UserInfo'
 
 type AppState = {
@@ -40,16 +40,7 @@ const initialState: AppState = {
     favoriteItems: localStorage.getItem('favoriteItems')
       ? JSON.parse(localStorage.getItem('favoriteItems')!)
       : [],
-    shippingAddress: localStorage.getItem('shippingAddress')
-      ? JSON.parse(localStorage.getItem('shippingAddress')!)
-      : {},
-    paymentMethod: localStorage.getItem('paymentMethod')
-      ? localStorage.getItem('paymentMethod')!
-      : 'PayPal',
-    itemsPrice: 0,
-    shippingPrice: 0,
-    taxPrice: 0,
-    totalPrice: 0,
+    
   },
 }
 
