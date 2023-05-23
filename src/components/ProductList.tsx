@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useState } from "react";
 import axios from "../axios";
 import ProductItem from "./ProductItem"
@@ -86,7 +87,7 @@ const handleFilters = (e) => {
             <option>women's clothing</option>
             <option>electronic</option>
             <option>jewelery</option>
-            <option >Mens</option>
+            <option >men's</option>
           
           </select>
 
