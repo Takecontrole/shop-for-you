@@ -37,7 +37,7 @@ export default function ProductPage() {
       type: 'CART_ADD_ITEM',
       payload: { ...convertProductToCartItem(product!), quantity },
     })
-    toast.success('Product added to the cart')
+    toast.success('Товар добавлен в корзину')
     navigate('/cart')
   }
   return isLoading ? (
@@ -80,7 +80,7 @@ export default function ProductPage() {
               <ListGroup variant="flush">
                 <ListGroup.Item>
                   <Row>
-                    <Col>Price:</Col>
+                    <Col>Цена:</Col>
                     <Col>${product.price}</Col>
                   </Row>
                 </ListGroup.Item>
@@ -106,8 +106,8 @@ export default function ProductPage() {
                   </ListGroup.Item>
                 )}
                 */}
-                      <Button onClick={addToCartHandler} variant="primary">
-                        Add to Cart
+                      <Button onClick={addToCartHandler} variant="dark">
+                        Добавить в корзину
                       </Button>
               </ListGroup>
             </Card.Body>

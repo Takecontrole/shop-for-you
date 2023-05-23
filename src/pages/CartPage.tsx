@@ -44,7 +44,7 @@ export default function CartPage() {
         <Col md={8}>
           {cartItems.length === 0 ? (
             <MessageBox>
-              Cart is empty. <Link to="/">Go Shopping</Link>
+              Карта пустая. <Link to="/">Продолжить покупки</Link>
             </MessageBox>
           ) : (
             <ListGroup>
@@ -57,7 +57,7 @@ export default function CartPage() {
                         alt={item.title}
                         className="img-fluid rounded thumbnail"
                       ></img>{' '}
-                      <Link to={`/product/${item.id}`}>{item.title}</Link>
+                      <Link style={{textDecoration:"none", color:"black "}}to={`/product/${item.id}`}>{item.title}</Link>
                     </Col>
                     <Col md={3}>
                       <Button

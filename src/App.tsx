@@ -94,12 +94,12 @@ function App() {
       <main className="mt-5">
         <Container className="mt-5">
       <div className="d-flex justify-content-between m-5"> 
-      <Link style={{textDecoration:"none"}} to="/" className="hover-underline-animation">
+      <Link style={{textDecoration:"none",marginRight:"1rem"}} to="/" className="hover-underline-animation">
                 <h1>Каталог</h1>
       </Link>
      
                 
-      <Link style={{textDecoration:"none"}}  to="/favorite" className="hover-underline-animation">
+      <Link style={{textDecoration:"none", marginLeft:"1rem"}}  to="/favorite" className="hover-underline-animation">
           <h1>Избранное</h1>
       </Link>
      </div>
