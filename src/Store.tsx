@@ -40,6 +40,10 @@ const initialState: AppState = {
     favoriteItems: localStorage.getItem('favoriteItems')
       ? JSON.parse(localStorage.getItem('favoriteItems')!)
       : [],
+      itemsPrice: 0,
+    shippingPrice: 0,
+    taxPrice: 0,
+    totalPrice: 0,
     
   },
 }
