@@ -1,6 +1,6 @@
 import React from 'react'
 import { Cart, CartItem, ShippingAddress } from './types/Cart'
-import { Favorite } from './types/Favorite'
+import {Favorite, FavoriteItem } from './types/Favorite'
 import { UserInfo } from './types/UserInfo'
 
 type AppState = {
@@ -131,6 +131,13 @@ case 'FAVORITE_ADD_ITEM':
             city: '',
             country: '',
           },
+          itemsPrice: 0,
+          shippingPrice: 0,
+          taxPrice: 0,
+          totalPrice: 0,
+        },
+        favorite: {
+          favoriteItems: [],
           itemsPrice: 0,
           shippingPrice: 0,
           taxPrice: 0,

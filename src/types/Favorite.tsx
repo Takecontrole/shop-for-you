@@ -5,3 +5,6 @@ export type FavoriteItem = {
   price: number
   title: string
 } 
+export type Favorite = {
+  favoriteItems: FavoriteItem[]
+}
