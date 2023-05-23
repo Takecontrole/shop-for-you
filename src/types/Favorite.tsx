@@ -7,4 +7,8 @@ export type FavoriteItem = {
 } 
 export type Favorite = {
   favoriteItems: FavoriteItem[]
+  itemsPrice: number
+  shippingPrice: number
+  taxPrice: number
+  totalPrice: number
 }
