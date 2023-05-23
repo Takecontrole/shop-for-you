@@ -13,8 +13,8 @@ export type fShippingAddress = {
   postalCode: string
 }
 
-export type FavoriteCart = {
-  FavoriteItems: CartItem[]
+export type Favorite= {
+  FavoriteItems: FavoriteItem[]
   shippingAddress: fShippingAddress
   paymentMethod: string
   itemsPrice: number
