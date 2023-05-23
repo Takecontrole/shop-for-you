@@ -121,7 +121,44 @@ case 'FAVORITE_ADD_ITEM':
     case 'FAVORITE_CLEAR':
       return { ...state, favorite: { ...state.favorite, favoriteItems: [] } }
 
-    
+    case 'USER_SIGNIN':
+      return { ...state, userInfo: action.payload }
+    case 'USER_SIGNOUT':
+      return {
+        mode:
+          window.matchMedia &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light',
+        cart: {
+          cartItems: [],
+          paymentMethod: 'PayPal',
+          shippingAddress: {
+            fullName: '',
+            address: '',
+            postalCode: '',
+            city: '',
+            country: '',
+          },
+          itemsPrice: 0,
+          shippingPrice: 0,
+          taxPrice: 0,
+          totalPrice: 0,
+        },
+      }
+    case 'SAVE_SHIPPING_ADDRESS':
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          shippingAddress: action.payload,
+        },
+      }
+    case 'SAVE_PAYMENT_METHOD':
+      return {
+        ...state,
+        cart: { ...state.cart, paymentMethod: action.payload },
+      }
     default:
       return state
   }
