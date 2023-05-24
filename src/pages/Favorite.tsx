@@ -25,23 +25,7 @@ export default function FavoritePage() {
   const itemsFilter = favoriteItems?.filter((item) =>
     item.title.toLowerCase().includes(searchValue.toLowerCase()) 
   ); 
-/*
-  const updateCartHandler = (item: FavoriteItem, quantity: number) => {
-   if (item.countInStock < quantity) {
-      toast.warn('Sorry. Product is out of stock')
-      return
-    }
-    
-    dispatch({
-      type: 'FAVORITE_ADD_ITEM',
-      payload: { ...item, quantity },
-    })
-  }
-  
-  const removeItemHandler = (item: FavoriteItem) => {
-    dispatch({ type: 'FAVORITE_REMOVE_ITEM', payload: item })
-  }
-*/
+
   return ( 
    <div>
     <div className="d-flex flex-column align-items-center justify-content-center">

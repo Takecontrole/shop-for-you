@@ -7,7 +7,7 @@ const apiClient = axios.create({
     'Content-type': 'application/json',
   },
 })
-
+/*
 apiClient.interceptors.request.use(
   async (config) => {
     if (localStorage.getItem('userInfo'))
@@ -20,5 +20,5 @@ apiClient.interceptors.request.use(
     Promise.reject(error)
   }
 )
-
+*/
 export default apiClient

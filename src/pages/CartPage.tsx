@@ -12,7 +12,7 @@ export default function CartPage() {
 
   const {
     state: {
-      mode,
+     // mode,
       cart: { cartItems },
     },
     dispatch,
@@ -64,14 +64,13 @@ export default function CartPage() {
                         onClick={() =>
                           updateCartHandler(item, item.quantity - 1)
                         }
-                        variant={mode}
+                        variant="primary"
                         disabled={item.quantity === 1}
                       >
                         <i className="fas fa-minus-circle"></i>
                       </Button>{' '}
                       <span>{item.quantity}</span>
-                    {/*  disabled={item.quantity === item.countInStock}
-                      */}
+
                       <Button
                         variant={mode}
                         onClick={() =>

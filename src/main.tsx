@@ -12,11 +12,11 @@ import App from './App'
 import './index.css'
 import HomePage from './pages/HomePage'
 import ProductPage from './pages/ProductPage'
+import CartPage from './pages/CartPage'
+import Favorite from './pages/Favorite'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { StoreProvider } from './Store'
-import CartPage from './pages/CartPage'
-import Favorite from './pages/Favorite'
 
 
 const router = createBrowserRouter(

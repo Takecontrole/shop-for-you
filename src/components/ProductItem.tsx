@@ -9,7 +9,7 @@ import { FavoriteItem } from '../types/Favorite'
 import { Product } from '../types/Product'
 import { convertProductToCartItem } from '../utils'
 import { convertProductToFavoriteItem } from '../utils'
-//import Rating from './Rating'
+
 
 function ProductItem({ product }: { product: Product }) {
   const { state, dispatch } = useContext(Store)
@@ -31,11 +31,6 @@ function ProductItem({ product }: { product: Product }) {
   const addToFavoriteHandler = (item: FavoriteItem) => {
     const existFavoriteItem = favoriteItems.find((x) => x.id === product.id)
     const quantity = existFavoriteItem ? existFavoriteItem.quantity + 1 : 1
-    {/*if (product.countInStock < quantity) {
-      //alert('Sorry. Product is out of stock')
-      return
-    }
-    */}
     dispatch({
       type: 'FAVORITE_ADD_ITEM',
       payload: { ...item, quantity },
@@ -52,18 +47,9 @@ function ProductItem({ product }: { product: Product }) {
         <Link style={{textDecoration:"none", color:"black"}}  to={`/product/${product.id}`}>
           <Card.Title>{product.title}</Card.Title>
         </Link>
-        {/*
-        <Rating rating={product.rating} numReviews={product.numReviews} />
-     */}
+
         <Card.Text>${product.price}</Card.Text>
-        {/*
-        {product.countInStock === 0 ? (
-          <Button variant="light" disabled>
-            Out of stock
-          </Button>
-        ) : (
-        )} 
-        */} 
+
         <div className="d-flex justify-content-between">
           <Button variant="dark"
             onClick={() => addToCartHandler(convertProductToCartItem(product))}

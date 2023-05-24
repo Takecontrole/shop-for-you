@@ -7,9 +7,11 @@ const FavoriteList = ({ itemsFilter }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [ price, setPrice ] = useState(0);
  const [sort, setSort] = useState("asc");
+  /*
   const handleInput = (e: React.SyntheticEvent)=>{
     setPrice( e.target.value );
   }
+  */
 const handleFilters = (e: React.SyntheticEvent) => {
     const value = e.target.value;
     setFilters({
@@ -79,6 +81,3 @@ const handleFilters = (e: React.SyntheticEvent) => {
 };
 
 export default FavoriteList;
-/* : products
-            .slice(0, 8)
-            .map((item) => <Product item={item} key={item.id} /> */

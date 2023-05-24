@@ -28,11 +28,7 @@ export default function ProductPage() {
   const addToCartHandler = () => {
     const existItem = cart.cartItems.find((x) => x.id === product!.id)
     const quantity = existItem ? existItem.quantity + 1 : 1
-    {/*if (product!.countInStock < quantity) {
-      toast.warn('Sorry. Product is out of stock')
-      return
-    }
-*/}
+
     dispatch({
       type: 'CART_ADD_ITEM',
       payload: { ...convertProductToCartItem(product!), quantity },
@@ -61,11 +57,7 @@ export default function ProductPage() {
               <h1>{product.title}</h1>
             </ListGroup.Item>
             <ListGroup.Item>
-            {/*  <Rating
-                rating={product.rating}
-                numReviews={product.numReviews}
-              ></Rating>
-              */}
+
             </ListGroup.Item>
             <ListGroup.Item>Price : ${product.price}</ListGroup.Item>
             <ListGroup.Item>
@@ -85,27 +77,9 @@ export default function ProductPage() {
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
-               {/*
-                  <Row>
-                    <Col>Status:</Col>
-                    <Col>
-                      {product.countInStock > 0 ? (
-                        <Badge bg="success">In Stock</Badge>
-                      ) : (
-                        <Badge bg="danger">Unavailable</Badge>
-                      )}
-                    </Col>
-                  </Row>
-                  */}
+
                 </ListGroup.Item>
-            {/*
-                {product.countInStock > 0 && (
-                  <ListGroup.Item>
-                    <div className="d-grid">
-                    </div>
-                  </ListGroup.Item>
-                )}
-                */}
+
                       <Button onClick={addToCartHandler} variant="dark">
                         Добавить в корзину
                       </Button>

@@ -82,6 +82,3 @@ const handleFilters = (e: React.SyntheticEvent) => {
 };
 
 export default ProductList;
-/* : products
-            .slice(0, 8)
-            .map((item) => <Product item={item} key={item.id} /> */

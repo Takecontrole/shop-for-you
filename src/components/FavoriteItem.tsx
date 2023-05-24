@@ -9,12 +9,10 @@ import { FavoriteItem } from '../types/Favorite'
 import { Product } from '../types/Product'
 import { convertProductToCartItem } from '../utils'
 import { convertProductToFavoriteItem } from '../utils'
-//import Rating from './Rating'
 
 function FavoriteCard({ product }: { product: Product }) {
   const { state, dispatch } = useContext(Store)
   const {
-    mode,
     cart: { cartItems },
     favorite: { favoriteItems },
   } = state
@@ -57,7 +55,7 @@ function FavoriteCard({ product }: { product: Product }) {
                     
                       <Button
                         onClick={() => removeItemHandler(product)}
-                        variant={mode}
+                        variant="primary"
                       >
                         <i className="fas fa-trash"></i>
                       </Button>

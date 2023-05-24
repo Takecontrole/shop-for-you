@@ -22,7 +22,7 @@ import TopImage from './components/TopImage'
 import MessageBox from './components/MessageBox'
 import { getError } from './utils'
 import { ApiError } from './types/ApiError'
-import SearchBox from './components/SearchBox'
+
 
 function App() {
   const {
@@ -33,7 +33,7 @@ function App() {
   useEffect(() => {
     document.body.setAttribute('data-bs-theme', mode)
   }, [mode])
-
+/*
   const switchModeHandler = () => {
     dispatch({ type: 'SWITCH_MODE' })
   }
@@ -47,7 +47,7 @@ function App() {
   }
 
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false)
-
+*/
   const { data: categories, isLoading, error } = useGetCategoriesQuery()
 
   return ( 
