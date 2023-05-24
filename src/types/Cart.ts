@@ -7,7 +7,7 @@ export type CartItem = {
 }
   //countInStock: number
   //id: number
-
+/*
 export type ShippingAddress = {
   fullName: string
   address: string
@@ -15,11 +15,11 @@ export type ShippingAddress = {
   country: string
   postalCode: string
 }
-
+*/
 export type Cart = {
   cartItems: CartItem[]
-  shippingAddress: ShippingAddress
-  paymentMethod: string
+ // shippingAddress: ShippingAddress
+ // paymentMethod: string
   itemsPrice: number
   shippingPrice: number
   taxPrice: number

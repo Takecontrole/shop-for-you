@@ -1,10 +1,10 @@
 import React from 'react'
-import { Cart, CartItem, ShippingAddress } from './types/Cart'
+import { Cart, CartItem } from './types/Cart'
 import {Favorite, FavoriteItem } from './types/Favorite'
 import { UserInfo } from './types/UserInfo'
 
 type AppState = {
-  mode: string
+  //mode: string
   cart: Cart
   favorite: Favorite
   userInfo?: UserInfo
@@ -14,23 +14,26 @@ const initialState: AppState = {
   userInfo: localStorage.getItem('userInfo')
     ? JSON.parse(localStorage.getItem('userInfo')!)
     : null,
-
+/*
   mode: localStorage.getItem('mode')
     ? localStorage.getItem('mode')!
     : window.matchMedia &&
       window.matchMedia('(prefers-color-scheme: dark)').matches
     ? 'dark'
     : 'light',
+    */
   cart: {
     cartItems: localStorage.getItem('cartItems')
       ? JSON.parse(localStorage.getItem('cartItems')!)
       : [],
+      /*
     shippingAddress: localStorage.getItem('shippingAddress')
       ? JSON.parse(localStorage.getItem('shippingAddress')!)
       : {},
     paymentMethod: localStorage.getItem('paymentMethod')
       ? localStorage.getItem('paymentMethod')!
       : 'PayPal',
+      */
     itemsPrice: 0,
     shippingPrice: 0,
     taxPrice: 0,
@@ -49,7 +52,7 @@ const initialState: AppState = {
 }
 
 type Action =
-  | { type: 'SWITCH_MODE' }
+ // | { type: 'SWITCH_MODE' }
   | { type: 'CART_ADD_ITEM'; payload: CartItem }
   | { type: 'CART_REMOVE_ITEM'; payload: CartItem }
   | { type: 'CART_CLEAR' }
@@ -58,14 +61,16 @@ type Action =
   | { type: 'FAVORITE_CLEAR' }
   | { type: 'USER_SIGNIN'; payload: UserInfo }
   | { type: 'USER_SIGNOUT' }
-  | { type: 'SAVE_SHIPPING_ADDRESS'; payload: ShippingAddress }
-  | { type: 'SAVE_PAYMENT_METHOD'; payload: string }
+//  | { type: 'SAVE_SHIPPING_ADDRESS'; payload: ShippingAddress }
+ // | { type: 'SAVE_PAYMENT_METHOD'; payload: string }
 
 function reducer(state: AppState, action: Action): AppState {
   switch (action.type) {
+    /*
     case 'SWITCH_MODE':
       localStorage.setItem('mode', state.mode === 'dark' ? 'light' : 'dark')
       return { ...state, mode: state.mode === 'dark' ? 'light' : 'dark' }
+  */
     case 'CART_ADD_ITEM':
       const newItem = action.payload
       const existItem = state.cart.cartItems.find(
@@ -115,7 +120,7 @@ case 'FAVORITE_ADD_ITEM':
     }
     case 'FAVORITE_CLEAR':
       return { ...state, favorite: { ...state.favorite, favoriteItems: [] } }
-
+/*
     case 'USER_SIGNIN':
       return { ...state, userInfo: action.payload }
     case 'USER_SIGNOUT':
@@ -160,7 +165,8 @@ case 'FAVORITE_ADD_ITEM':
       return {
         ...state,
         cart: { ...state.cart, paymentMethod: action.payload },
-      }
+      } 
+      */
     default:
       return state
   }
