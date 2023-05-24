@@ -26,14 +26,14 @@ import { ApiError } from './types/ApiError'
 
 function App() {
   const {
-    state: { mode, cart, userInfo },
+    state: { cart },
     dispatch,
   } = useContext(Store)
  const [active, setActive] = useState(true);
+/*
   useEffect(() => {
     document.body.setAttribute('data-bs-theme', mode)
   }, [mode])
-/*
   const switchModeHandler = () => {
     dispatch({ type: 'SWITCH_MODE' })
   }

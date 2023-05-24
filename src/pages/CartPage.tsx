@@ -72,7 +72,7 @@ export default function CartPage() {
                       <span>{item.quantity}</span>
 
                       <Button
-                        variant={mode}
+                        variant="primary"
                         onClick={() =>
                           updateCartHandler(item, item.quantity + 1)
                         }
@@ -84,7 +84,7 @@ export default function CartPage() {
                     <Col md={2}>
                       <Button
                         onClick={() => removeItemHandler(item)}
-                        variant={mode}
+                        variant="primary"
                       >
                         <i className="fas fa-trash"></i>
                       </Button>
